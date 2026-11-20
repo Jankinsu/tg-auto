@@ -1,0 +1,11 @@
+[Unit]
+Description=Telegram automation: daily token check-in
+Documentation=https://github.com/Jankinsu/tg-auto
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/apps/tg-auto
+EnvironmentFile=%h/.config/tg-auto/settings.env
+ExecStart=%h/apps/tg-auto/.venv/bin/python %h/apps/tg-auto/checkin.py --execute
+TimeoutStartSec=120
+UMask=0077
