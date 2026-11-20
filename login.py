@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+import os
 from urllib.parse import urlparse
 
 import socks
@@ -34,6 +35,7 @@ def parse_proxy(url: str | None):
 
 
 async def main() -> None:
+    os.umask(0o077)  # Keep newly created Telegram session files private.
     config = load_config()
     async with TelegramClient(
         str(config.session_path),
