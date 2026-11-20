@@ -62,3 +62,25 @@ This script **does not send messages or click buttons**. It displays message IDs
 Stage 1: configuration and manual login completed. Stage 2: read-only inspection of existing bot messages and inline keyboards. No automated claims or systemd timer yet.
 
 Next: implement the verified two-step menu navigation and claim flow, then user-level systemd timer.
+
+## Two-step daily token check-in
+
+The bot's first-page callback **only navigates** to the reward submenu. The second-page callback performs the actual claim. The bot may *edit the same message ID* rather than creating a new message, so the script re-fetches the message after each click.
+
+Before enabling any automatic schedule, run the navigation-only test:
+
+```bash
+cd ~/apps/tg-auto
+git pull
+.venv/bin/python checkin.py --navigate-only
+```
+
+This sends `/start` and clicks **only** the first-page `点击领取余额` navigation callback (or an unambiguous already-claimed reward entry). It checks that the reward submenu appeared but **never presses the daily claim button**.
+
+After confirming the output matches the Telegram client, explicitly claim:
+
+```bash
+.venv/bin/python checkin.py --execute
+```
+
+The script will claim only if the submenu offers one unambiguous `点击领取每日…token` callback, and it verifies the updated submenu says already claimed. If it cannot confirm the result, it exits with an error rather than blindly retrying. No scheduler is installed yet.
