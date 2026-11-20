@@ -1,0 +1,21 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# Telegram session and runtime data
+*.session
+*.session-journal
+*.sqlite3
+*.log
+logs/
+
+# Local credentials
+.env
+.env.*
+settings.env
+!settings.env.example
+
+# Editors
+.vscode/
+.idea/
