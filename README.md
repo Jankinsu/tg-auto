@@ -35,7 +35,7 @@ TG_AUTO_PROXY=socks5://127.0.0.1:2080
 
 ## 2. 首次安装（Debian 13）
 
-使用普通 Linux 用户（例如 `xiaomo`），**不要以 root 或 `sudo bash` 运行脚本**。脚本固定使用该用户的 `$HOME`。安装 `tg-auto` 不需要运行青龙。
+使用普通 Linux 用户（例如 `example-user`），**不要以 root 或 `sudo bash` 运行脚本**。脚本固定使用该用户的 `$HOME`。安装 `tg-auto` 不需要运行青龙。
 
 系统准备：
 
