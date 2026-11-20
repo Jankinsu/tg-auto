@@ -1,0 +1,13 @@
+[Unit]
+Description=Run Telegram daily token check-in
+
+[Timer]
+# Example: every day at 09:10 in the Debian host's local time zone.
+OnCalendar=*-*-* 09:10:00
+Persistent=true
+RandomizedDelaySec=5min
+AccuracySec=1min
+Unit=tg-auto.service
+
+[Install]
+WantedBy=timers.target
